@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section9" Database="" Version="10.0.0">
+  <Project Name="IfStatement" Path="IfStatement/IfStatement.project" Active="No"/>
+  <Project Name="nestedLoopTest" Path="nestedLoopTest/nestedLoopTest.project" Active="No"/>
+  <Project Name="SwitchStatement" Path="SwitchStatement/SwitchStatement.project" Active="No"/>
+  <Project Name="SwitchEnum" Path="SwitchEnum/SwitchEnum.project" Active="No"/>
+  <Project Name="LABSwitchStatement" Path="LABSwitchStatement/LABSwitchStatement.project" Active="No"/>
+  <Project Name="ForLoop" Path="ForLoop/ForLoop.project" Active="No"/>
+  <Project Name="LABForLoop" Path="LABForLoop/LABForLoop.project" Active="No"/>
+  <Project Name="LABRangeBasedLoop" Path="LABRangeBasedLoop/LABRangeBasedLoop.project" Active="No"/>
+  <Project Name="whileLoop" Path="whileLoop/whileLoop.project" Active="No"/>
+  <Project Name="LABwhileLoop" Path="LABwhileLoop/LABwhileLoop.project" Active="No"/>
+  <Project Name="doWhileLoop" Path="doWhileLoop/doWhileLoop.project" Active="No"/>
+  <Project Name="nestedLoop" Path="nestedLoop/nestedLoop.project" Active="No"/>
+  <Project Name="NestLoopTests" Path="NestLoopTests/NestLoopTests.project" Active="No"/>
+  <Project Name="LABNestedLoop" Path="LABNestedLoop/LABNestedLoop.project" Active="No"/>
+  <Project Name="SectionChallenge" Path="SectionChallenge/SectionChallenge.project" Active="No"/>
+  <Project Name="LABBool" Path="LABBool/LABBool.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="IfStatement" ConfigName="Debug"/>
+      <Project Name="nestedLoopTest" ConfigName="Debug"/>
+      <Project Name="SwitchStatement" ConfigName="Debug"/>
+      <Project Name="SwitchEnum" ConfigName="Debug"/>
+      <Project Name="LABSwitchStatement" ConfigName="Debug"/>
+      <Project Name="ForLoop" ConfigName="Debug"/>
+      <Project Name="LABForLoop" ConfigName="Debug"/>
+      <Project Name="LABRangeBasedLoop" ConfigName="Debug"/>
+      <Project Name="whileLoop" ConfigName="Debug"/>
+      <Project Name="LABwhileLoop" ConfigName="Debug"/>
+      <Project Name="doWhileLoop" ConfigName="Debug"/>
+      <Project Name="nestedLoop" ConfigName="Debug"/>
+      <Project Name="NestLoopTests" ConfigName="Debug"/>
+      <Project Name="LABNestedLoop" ConfigName="Debug"/>
+      <Project Name="SectionChallenge" ConfigName="Debug"/>
+      <Project Name="LABBool" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="IfStatement" ConfigName="Release"/>
+      <Project Name="nestedLoopTest" ConfigName="Release"/>
+      <Project Name="SwitchStatement" ConfigName="Release"/>
+      <Project Name="SwitchEnum" ConfigName="Release"/>
+      <Project Name="LABSwitchStatement" ConfigName="Release"/>
+      <Project Name="ForLoop" ConfigName="Release"/>
+      <Project Name="LABForLoop" ConfigName="Release"/>
+      <Project Name="LABRangeBasedLoop" ConfigName="Release"/>
+      <Project Name="whileLoop" ConfigName="Release"/>
+      <Project Name="LABwhileLoop" ConfigName="Release"/>
+      <Project Name="doWhileLoop" ConfigName="Release"/>
+      <Project Name="nestedLoop" ConfigName="Release"/>
+      <Project Name="NestLoopTests" ConfigName="Release"/>
+      <Project Name="LABNestedLoop" ConfigName="Release"/>
+      <Project Name="SectionChallenge" ConfigName="Release"/>
+      <Project Name="LABBool" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

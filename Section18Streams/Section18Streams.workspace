@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section18Streams" Database="" Version="10.0.0">
+  <Project Name="boolManipulator" Path="boolManipulator/boolManipulator.project" Active="No"/>
+  <Project Name="floatingPointManipulator" Path="floatingPointManipulator/floatingPointManipulator.project" Active="No"/>
+  <Project Name="AlignandFill" Path="AlignandFill/AlignandFill.project" Active="No"/>
+  <Project Name="SectionChallenge1" Path="SectionChallenge1/SectionChallenge1.project" Active="No"/>
+  <Project Name="ReadingText" Path="ReadingText/ReadingText.project" Active="No"/>
+  <Project Name="FileRead" Path="FileRead/FileRead.project" Active="No"/>
+  <Project Name="SectionChallenge2" Path="SectionChallenge2/SectionChallenge2.project" Active="No"/>
+  <Project Name="SectionChallenge2Ans" Path="SectionChallenge2Ans/SectionChallenge2Ans.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="boolManipulator" ConfigName="Debug"/>
+      <Project Name="floatingPointManipulator" ConfigName="Debug"/>
+      <Project Name="AlignandFill" ConfigName="Debug"/>
+      <Project Name="SectionChallenge1" ConfigName="Debug"/>
+      <Project Name="ReadingText" ConfigName="Debug"/>
+      <Project Name="FileRead" ConfigName="Debug"/>
+      <Project Name="SectionChallenge2" ConfigName="Debug"/>
+      <Project Name="SectionChallenge2Ans" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="boolManipulator" ConfigName="Release"/>
+      <Project Name="floatingPointManipulator" ConfigName="Release"/>
+      <Project Name="AlignandFill" ConfigName="Release"/>
+      <Project Name="SectionChallenge1" ConfigName="Release"/>
+      <Project Name="ReadingText" ConfigName="Release"/>
+      <Project Name="FileRead" ConfigName="Release"/>
+      <Project Name="SectionChallenge2" ConfigName="Release"/>
+      <Project Name="SectionChallenge2Ans" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

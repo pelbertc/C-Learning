@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section13" Database="" Version="10.0.0">
+  <Project Name="DeclareClassnObjects" Path="DeclareClassnObjects/DeclareClassnObjects.project" Active="No"/>
+  <Project Name="AccessingClassMembers" Path="AccessingClassMembers/AccessingClassMembers.project" Active="No"/>
+  <Project Name="AccessModifier" Path="AccessModifier/AccessModifier.project" Active="No"/>
+  <Project Name="ImplementingMethod1" Path="ImplementingMethod1/ImplementingMethod1.project" Active="No"/>
+  <Project Name="ImplementingMethod2" Path="ImplementingMethod2/ImplementingMethod2.project" Active="No"/>
+  <Project Name="ConstructornDestructor" Path="ConstructornDestructor/ConstructornDestructor.project" Active="No"/>
+  <Project Name="DefaultConstructor" Path="DefaultConstructor/DefaultConstructor.project" Active="No"/>
+  <Project Name="ContrucInitialLists" Path="ContrucInitialLists/ContrucInitialLists.project" Active="No"/>
+  <Project Name="DelegatingConstruc" Path="DelegatingConstruc/DelegatingConstruc.project" Active="No"/>
+  <Project Name="DefaultParamConstructor" Path="DefaultParamConstructor/DefaultParamConstructor.project" Active="No"/>
+  <Project Name="CopyConstruct" Path="CopyConstruct/CopyConstruct.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="DeclareClassnObjects" ConfigName="Debug"/>
+      <Project Name="AccessingClassMembers" ConfigName="Debug"/>
+      <Project Name="AccessModifier" ConfigName="Debug"/>
+      <Project Name="ImplementingMethod1" ConfigName="Debug"/>
+      <Project Name="ImplementingMethod2" ConfigName="Debug"/>
+      <Project Name="ConstructornDestructor" ConfigName="Debug"/>
+      <Project Name="DefaultConstructor" ConfigName="Debug"/>
+      <Project Name="ContrucInitialLists" ConfigName="Debug"/>
+      <Project Name="DelegatingConstruc" ConfigName="Debug"/>
+      <Project Name="DefaultParamConstructor" ConfigName="Debug"/>
+      <Project Name="CopyConstruct" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="DeclareClassnObjects" ConfigName="Release"/>
+      <Project Name="AccessingClassMembers" ConfigName="Release"/>
+      <Project Name="AccessModifier" ConfigName="Release"/>
+      <Project Name="ImplementingMethod1" ConfigName="Release"/>
+      <Project Name="ImplementingMethod2" ConfigName="Release"/>
+      <Project Name="ConstructornDestructor" ConfigName="Release"/>
+      <Project Name="DefaultConstructor" ConfigName="Release"/>
+      <Project Name="ContrucInitialLists" ConfigName="Release"/>
+      <Project Name="DelegatingConstruc" ConfigName="Release"/>
+      <Project Name="DefaultParamConstructor" ConfigName="Release"/>
+      <Project Name="CopyConstruct" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

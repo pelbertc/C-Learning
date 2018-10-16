@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section12" Database="" Version="10.0.0">
+  <Project Name="Pointer" Path="Pointer/Pointer.project" Active="No"/>
+  <Project Name="DynamicMemory" Path="DynamicMemory/DynamicMemory.project" Active="No"/>
+  <Project Name="ArraynPointers" Path="ArraynPointers/ArraynPointers.project" Active="No"/>
+  <Project Name="PointerArithmetic" Path="PointerArithmetic/PointerArithmetic.project" Active="No"/>
+  <Project Name="PointerFunction" Path="PointerFunction/PointerFunction.project" Active="No"/>
+  <Project Name="PointerFunction1" Path="PointerFunction1/PointerFunction1.project" Active="No"/>
+  <Project Name="PointerFunction2" Path="PointerFunction2/PointerFunction2.project" Active="No"/>
+  <Project Name="ReturnPointer" Path="ReturnPointer/ReturnPointer.project" Active="No"/>
+  <Project Name="References" Path="References/References.project" Active="No"/>
+  <Project Name="SectionChallenge" Path="SectionChallenge/SectionChallenge.project" Active="No"/>
+  <Project Name="PointerTests" Path="PointerTests/PointerTests.project" Active="No"/>
+  <Project Name="PointerArithmetic1" Path="PointerArithmetic1/PointerArithmetic1.project" Active="No"/>
+  <Project Name="PointerSelfChecks" Path="PointerSelfChecks/PointerSelfChecks.project" Active="No"/>
+  <Project Name="ReviewExercises" Path="ReviewExercises/ReviewExercises.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Pointer" ConfigName="Debug"/>
+      <Project Name="DynamicMemory" ConfigName="Debug"/>
+      <Project Name="ArraynPointers" ConfigName="Debug"/>
+      <Project Name="PointerArithmetic" ConfigName="Debug"/>
+      <Project Name="PointerFunction" ConfigName="Debug"/>
+      <Project Name="PointerFunction1" ConfigName="Debug"/>
+      <Project Name="PointerFunction2" ConfigName="Debug"/>
+      <Project Name="ReturnPointer" ConfigName="Debug"/>
+      <Project Name="References" ConfigName="Debug"/>
+      <Project Name="SectionChallenge" ConfigName="Debug"/>
+      <Project Name="PointerTests" ConfigName="Debug"/>
+      <Project Name="PointerArithmetic1" ConfigName="Debug"/>
+      <Project Name="PointerSelfChecks" ConfigName="Debug"/>
+      <Project Name="ReviewExercises" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Pointer" ConfigName="Release"/>
+      <Project Name="DynamicMemory" ConfigName="Release"/>
+      <Project Name="ArraynPointers" ConfigName="Release"/>
+      <Project Name="PointerArithmetic" ConfigName="Release"/>
+      <Project Name="PointerFunction" ConfigName="Release"/>
+      <Project Name="PointerFunction1" ConfigName="Release"/>
+      <Project Name="PointerFunction2" ConfigName="Release"/>
+      <Project Name="ReturnPointer" ConfigName="Release"/>
+      <Project Name="References" ConfigName="Release"/>
+      <Project Name="SectionChallenge" ConfigName="Release"/>
+      <Project Name="PointerTests" ConfigName="Release"/>
+      <Project Name="PointerArithmetic1" ConfigName="Release"/>
+      <Project Name="PointerSelfChecks" ConfigName="Release"/>
+      <Project Name="ReviewExercises" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

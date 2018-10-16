@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section10" Database="" Version="10.0.0">
+  <Project Name="CharacterFunctions" Path="CharacterFunctions/CharacterFunctions.project" Active="No"/>
+  <Project Name="LABCString" Path="LABCString/LABCString.project" Active="No"/>
+  <Project Name="CPPString" Path="CPPString/CPPString.project" Active="No"/>
+  <Project Name="LABCPP" Path="LABCPP/LABCPP.project" Active="No"/>
+  <Project Name="LABCString1" Path="LABCPP1/LABCPP1.project" Active="No"/>
+  <Project Name="LABCPlusPlus" Path="LABCPlusPlus/LABCPlusPlus.project" Active="No"/>
+  <Project Name="SectionChallenge" Path="SectionChallenge/SectionChallenge.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="CharacterFunctions" ConfigName="Debug"/>
+      <Project Name="LABCString" ConfigName="Debug"/>
+      <Project Name="CPPString" ConfigName="Debug"/>
+      <Project Name="LABCPP" ConfigName="Debug"/>
+      <Project Name="LABCString1" ConfigName="Debug"/>
+      <Project Name="LABCPlusPlus" ConfigName="Debug"/>
+      <Project Name="SectionChallenge" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="CharacterFunctions" ConfigName="Release"/>
+      <Project Name="LABCString" ConfigName="Release"/>
+      <Project Name="CPPString" ConfigName="Release"/>
+      <Project Name="LABCPP" ConfigName="Release"/>
+      <Project Name="LABCString1" ConfigName="Release"/>
+      <Project Name="LABCPlusPlus" ConfigName="Release"/>
+      <Project Name="SectionChallenge" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

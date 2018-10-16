@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section7" Database="" Version="10.0.0">
+  <Project Name="Arrays" Path="Arrays/Arrays.project" Active="No"/>
+  <Project Name="LABArray" Path="LABArray/LABArray.project" Active="No"/>
+  <Project Name="ArrayMultiDimension" Path="ArrayMultiDimension/ArrayMultiDimension.project" Active="No"/>
+  <Project Name="Vectors" Path="Vectors/Vectors.project" Active="No"/>
+  <Project Name="SectionChallenge" Path="SectionChallenge/SectionChallenge.project" Active="No"/>
+  <Project Name="ReviewExercises" Path="ReviewExercises/ReviewExercises.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Arrays" ConfigName="Debug"/>
+      <Project Name="LABArray" ConfigName="Debug"/>
+      <Project Name="ArrayMultiDimension" ConfigName="Debug"/>
+      <Project Name="Vectors" ConfigName="Debug"/>
+      <Project Name="SectionChallenge" ConfigName="Debug"/>
+      <Project Name="ReviewExercises" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Arrays" ConfigName="Release"/>
+      <Project Name="LABArray" ConfigName="Release"/>
+      <Project Name="ArrayMultiDimension" ConfigName="Release"/>
+      <Project Name="Vectors" ConfigName="Release"/>
+      <Project Name="SectionChallenge" ConfigName="Release"/>
+      <Project Name="ReviewExercises" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

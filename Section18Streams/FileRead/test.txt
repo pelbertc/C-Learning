@@ -1,0 +1,5 @@
+SMB1_NegProt                    12       210
+SMB2_Negotiate                  14       19           
+SMB2_SessionSetup               19        1       
+SMB2_Logoff                     16        6   
+           

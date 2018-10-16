@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="C++Codes" Database="" Version="10.0.0">
+  <Project Name="Chapter2" Path="Chapter2/Chapter2.project" Active="Yes"/>
+  <Project Name="Chapter3" Path="Chapter3/Chapter3.project"/>
+  <Project Name="Functions" Path="Functions/Functions.project"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Chapter2" ConfigName="Debug"/>
+      <Project Name="Chapter3" ConfigName="Debug"/>
+      <Project Name="Functions" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Chapter2" ConfigName="Release"/>
+      <Project Name="Chapter3" ConfigName="Release"/>
+      <Project Name="Functions" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

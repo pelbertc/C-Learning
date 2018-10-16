@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Section11" Database="" Version="10.0.0">
+  <Project Name="FunctionParameters" Path="FunctionParameters/FunctionParameters.project" Active="No"/>
+  <Project Name="DefaultArguments" Path="DefaultArguments/DefaultArguments.project" Active="No"/>
+  <Project Name="OverloadingFunctions" Path="OverloadingFunctions/OverloadingFunctions.project" Active="No"/>
+  <Project Name="ArrayFunctions" Path="ArrayFunctions/ArrayFunctions.project" Active="No"/>
+  <Project Name="LABFunctionPrototype" Path="LABFunctionPrototype/LABFunctionPrototype.project" Active="No"/>
+  <Project Name="LABFunctionCLib" Path="LABFunctionCLib/LABFunctionCLib.project" Active="No"/>
+  <Project Name="PassByReference" Path="PassByReference/PassByReference.project" Active="No"/>
+  <Project Name="LABPassbyReference" Path="LABPassbyReference/LABPassbyReference.project" Active="No"/>
+  <Project Name="LABFunctionOverload" Path="LABFunctionOverload/LABFunctionOverload.project" Active="No"/>
+  <Project Name="HowFuncWorks" Path="HowFuncWorks/HowFuncWorks.project" Active="No"/>
+  <Project Name="RecursiveFuncFibonacci" Path="RecursiveFunction/RecursiveFunction.project" Active="No"/>
+  <Project Name="RecursiveFuncFactorial" Path="RecursiveFuncFactorial/RecursiveFuncFactorial.project" Active="No"/>
+  <Project Name="LABFunctionRecursive" Path="LABFunctionRecursive/LABFunctionRecursive.project" Active="No"/>
+  <Project Name="SectionChallence" Path="SectionChallence/SectionChallence.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="FunctionParameters" ConfigName="Debug"/>
+      <Project Name="DefaultArguments" ConfigName="Debug"/>
+      <Project Name="OverloadingFunctions" ConfigName="Debug"/>
+      <Project Name="ArrayFunctions" ConfigName="Debug"/>
+      <Project Name="LABFunctionPrototype" ConfigName="Debug"/>
+      <Project Name="LABFunctionCLib" ConfigName="Debug"/>
+      <Project Name="PassByReference" ConfigName="Debug"/>
+      <Project Name="LABPassbyReference" ConfigName="Debug"/>
+      <Project Name="LABFunctionOverload" ConfigName="Debug"/>
+      <Project Name="HowFuncWorks" ConfigName="Debug"/>
+      <Project Name="RecursiveFuncFibonacci" ConfigName="Debug"/>
+      <Project Name="RecursiveFuncFactorial" ConfigName="Debug"/>
+      <Project Name="LABFunctionRecursive" ConfigName="Debug"/>
+      <Project Name="SectionChallence" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="FunctionParameters" ConfigName="Release"/>
+      <Project Name="DefaultArguments" ConfigName="Release"/>
+      <Project Name="OverloadingFunctions" ConfigName="Release"/>
+      <Project Name="ArrayFunctions" ConfigName="Release"/>
+      <Project Name="LABFunctionPrototype" ConfigName="Release"/>
+      <Project Name="LABFunctionCLib" ConfigName="Release"/>
+      <Project Name="PassByReference" ConfigName="Release"/>
+      <Project Name="LABPassbyReference" ConfigName="Release"/>
+      <Project Name="LABFunctionOverload" ConfigName="Release"/>
+      <Project Name="HowFuncWorks" ConfigName="Release"/>
+      <Project Name="RecursiveFuncFibonacci" ConfigName="Release"/>
+      <Project Name="RecursiveFuncFactorial" ConfigName="Release"/>
+      <Project Name="LABFunctionRecursive" ConfigName="Release"/>
+      <Project Name="SectionChallence" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

@@ -1,0 +1,1210 @@
+2018-09-12 03:06:48 avndmp Error <15623>: [ndmp2avtar-/root_vdm_1/Employee-HD/] Problem reading 65536 bytes from NDMP stream socket, at stream position 2156658688: code 104: Connection reset by peer
+2018-09-12 03:06:48 avndmp Info <18443>: [ndmp2avtar-/root_vdm_1/Employee-HD/] NDMP stream bytes read = 2156658688, bytes written = 2156658688
+2018-09-12 03:06:48 avndmp Error <11892>: [snapup-/root_vdm_1/Employee-HD] ndmp socket read, trying to read 4000 bytes, receive returned error 6: code 6: No such device or address
+2018-09-12 03:06:48 avndmp Warning <17314>: [snapup-/root_vdm_1/Employee-HD] Receive ndmp header failed
+
+----------------------------------------
+
+[root@vnx5500 dvdiso]# server_log server_2|head
+NAS LOG for slot 2:
+--------------------
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00   1B -- 8KB  size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00  8KB -- 16KB size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00 16KB -- 32KB size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00 32KB -- 64KB size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00 64KB -- 1MB  size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00  1MB -- 32MB size file processed: 3
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00 32MB -- 1GB  size file processed: 0
+2018-09-29 21:52:42: NDMP: 4: Thread nasa00    1G more   size file processed: 0
+[root@vnx5500 dvdiso]# server_log server_2|tail
+2018-10-01 10:17:10: UFS: 6: Volume name:Sh382189
+2018-10-01 10:17:10: UFS: 6: initFS: adding fsid(189) to ufslogd sync task
+2018-10-01 10:17:10: UFS: 6: starting gid map file processing for fs:189.
+2018-10-01 10:17:10: UFS: 6: gid map file processing is completed for fsid:189 in 8 msec
+2018-10-01 10:17:10: DEDUPE: 6: Domain initialized for fsid 189
+2018-10-01 10:17:12: RCPT: 6: RcpTransportSender::openStream localip:10.1.75.100 localport:62440 handle :0x02968b8840
+2018-10-01 10:17:12: REP: 6: DpCopierSender::setLatency - RepSession=151_APM00112300505_2007_203_APM00132343423_2007 set to 1048576
+2018-10-01 10:17:20: RCPT: 6: RcpTransportSender::rcpclose() done on handle:0x02968b8840
+2018-10-01 10:17:45: SMB: 3:[Student-HD] smb2_cCtxIn: unrecognized create context AAPL.
+
+[root@vnx5500 dvdiso]#
+
+
+:30 log.serve
+
+
+cat /etc/cron.d/nas_sys
+
+CRON job format
+Value            Parameter         Parameter     Example
+Position                           Range         Value
+1 st Value        Minutes         0 to 59        30
+2 nd Value        Hour of day     0 to 23         3
+3 rd Value        Day of month    1 to 31         * wildcard
+4 th Value        Month of year   1 to 12         * wildcard
+5 th Value        Day of week                     7
+Sunday = 0 or 7                   0 to 7       1212
+ # * * * * *  command to execute
+ # │ │ │ │ │
+ # │ │ │ │ │
+ # │ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)
+ # │ │ │ └────────── month (1 - 12)
+ # │ │ └─────────────── day of month (1 - 31)
+ # │ └──────────────────── hour (0 - 23)
+ # └───────────────────────── min (0 - 59)
+
+ cat 
+ 
+30 3 * * * root /celerra/dvdiso/dmlogrotate.sh >/dev/null 2>&1
+
+ [root@Q5EVNX02CM01 dvdiso]# cat dmlogrotate.sh
+
+------------------------------------
+L1 SSC RS Gateway
+
+
+------------------------------------
+[nasadmin@bohr-cs0 ~]$ /nas/tools/dbchk -pvwxV
+Error: Volume 102 present on server server_3 is shown not in use in Control Station volumes database, there is possibility of this being overlapped .
+Error: Volume 103 present on server server_3 is shown not in use in Control Station volumes database, there is possibility of this being overlapped .
+Error: Volume 104 present on server server_3 is shown not in use in Control Station volumes database, there is possibility of this being overlapped .
+Error: Volume 105 present on server server_3 is shown not in use in Control Station volumes database, there is possibility of this being overlapped .
+Error: Volume 106 present on server server_3 is shown not in use in Control Station volumes database, there is possibility of this being overlapped .
+Error: Volume 151 on server server_3 is missing in Control Station volumes database.
+Error: Volume 181 on server server_3 is missing in Control Station volumes database.
+Error: Volume 182 on server server_3 is missing in Control Station volumes database.
+Error: Volume 19792 on server server_3 is missing in Control Station volumes database.
+Error: Volume 19793 on server server_3 is missing in Control Station volumes database.
+Error: Volume 27200 on server server_3 is missing in Control Station volumes database.
+Error: Volume 27201 on server server_3 is missing in Control Station volumes database.
+Error: Volume 183 on server server_3 is missing in Control Station volumes database.
+[nasadmin@bohr-cs0 ~]$
+
+[nasadmin@bohr-cs0 ~]$ nas_disk -list
+id   inuse  sizeMB    storageID-devID   type  name          servers
+1     y      11260  CKM00112400974-2007 CLSTD root_disk     1,2,3,4
+2     y      11260  CKM00112400974-2008 CLSTD root_ldisk    1,2,3,4
+3     y       2038  CKM00112400974-2009 CLSTD d3            1,2,3,4
+4     y       2038  CKM00112400974-200A CLSTD d4            1,2,3,4
+5     y       2044  CKM00112400974-200B CLSTD d5            1,2,3,4
+6     y      65526  CKM00112400974-200C CLSTD d6            1,2,3,4
+7     y     424045  CKM00112400974-000A PERF  d7            1,2,3,4
+8     y     424045  CKM00112400974-000B PERF  d8            1,2,3,4
+9     y     424045  CKM00112400974-000C PERF  d9            1,2,3,4
+10    y     424045  CKM00112400974-000D PERF  d10           1,2,3,4
+11    y     424045  CKM00112400974-000E PERF  d11           1,2,3,4
+12    n     424045  CKM00112400974-000F PERF  d12           1,2,3,4
+13    n     424045  CKM00112400974-0010 PERF  d13           1,2,3,4
+14    n     424045  CKM00112400974-0011 PERF  d14           1,2,3,4
+15    n     424045  CKM00112400974-0012 PERF  d15           1,2,3,4
+16    n     424045  CKM00112400974-0013 PERF  d16           1,2,3,4
+17    y    1278293  CKM00112400974-0000 MIXED d17           1,2,3,4
+
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=102
+id          = 102
+name        = d12
+acl         = 0
+in_use      = False
+type        = disk
+disk_name   = d12
+disks       = d12
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=103
+id          = 103
+name        = d13
+acl         = 0
+in_use      = False
+type        = disk
+disk_name   = d13
+disks       = d13
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=104
+id          = 104
+name        = d14
+acl         = 0
+in_use      = False
+type        = disk
+disk_name   = d14
+disks       = d14
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=105
+id          = 105
+name        = d15
+acl         = 0
+in_use      = False
+type        = disk
+disk_name   = d15
+disks       = d15
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=106
+id          = 106
+name        = d16
+acl         = 0
+in_use      = False
+type        = disk
+disk_name   = d16
+disks       = d16
+[nasadmin@bohr-cs0 ~]$ nas_volume -info id=151
+Error 2211: id=151 : invalid id specified
+ 
+======================================
+THESE 2 FILES CAN BE DELETED
+
+/nbsnas/server/server_2/SCCS/s.mount.l  130.13 MB
+/nbsnas/volume/SCCS/s.filesys.l 36.4745 MB
+/nbsnas/log/webui/webui_syr.log 22.2152 MB
+[root@pacdcvnx02-cs1 nasadmin]#
+
+===========================================
+
+Oct  2 15:04:14 2018:DART:REP:INFO:31:Slot 2:::1538485448:Source=235_CKM00144801335_2007_432_CKM00145000715_2007(alias=REP_luxsv002050_departements_fs), transferring. Data connection up.
+Oct  2 15:04:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485457:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:04:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485457:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:05:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485517:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:05:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485517:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:05:24 2018:DART:KERNEL:ERROR:3:Slot 2:::1538485518:ThreadsServicesSupervisor: Service:NFSD Pool:NFSD_Exec BLOCKED for 8497 seconds: Server operations may be impacted .
+Oct  2 15:06:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485577:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:06:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485577:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:07:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485637:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:07:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485637:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:07:44 2018:DART:REP:INFO:31:Slot 2:::1538485658:Source=141_CKM00144801335_2007_221_CKM00145000715_2007(alias=REP_luxsv002050_apps_fs), transferring. Data connection up.
+Oct  2 15:07:52 2018:CS_PLATFORM:NASDB:INFO:305:::::nasdb_backup: NAS_DB checkpoint done.
+Oct  2 15:08:07 2018:CS_PLATFORM:NASDB:INFO:306:::::nasdb_backup: VNX File database backup done.
+Oct  2 15:08:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485697:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:08:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485697:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:09:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485757:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:09:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485757:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:09:24 2018:DART:REP:INFO:31:Slot 2:::1538485758:Source=146_CKM00144801335_2007_268_CKM00145000715_2007(alias=REP_luxsv002050_profiles_fs), transferring. Data connection up.
+Oct  2 15:10:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485817:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:10:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485817:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:11:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485877:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:11:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485877:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:11:54 2018:DART:REP:INFO:31:Slot 2:::1538485909:Source=151_CKM00144801335_2007_257_CKM00145000715_2007(alias=REP_luxsv002050_home_fs), transferring. Data connection up.
+Oct  2 15:12:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485937:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow     over threshold (1)
+Oct  2 15:12:24 2018:DART:DRIVERS:ERROR:21:Slot 2:::1538485937:PCI-E Device (254,3,2): DIMM 2, CH1,S0,R1&R0 CorrErrOvflow Cnt over threshold (1)
+Oct  2 15:13:20 2018:CS_PLATFORM:BoxMonitor:CRITICAL:302:::::Slot 2 has panicked.
+Oct  2 15:13:26 2018:CS_PLATFORM:BoxMonitor:DEBUG:905:::::Slot 2 recover_slot /nas 2 has started.
+Oct  2 15:13:33 2018:DART:DRIVERS:WARNING:2:Slot 3:::1538485981:cge-1-0: link down
+Oct  2 15:13:33 2018:DART:DRIVERS:WARNING:2:Slot 3:::1538485981:cge-1-1: link down
+Oct  2 15:13:38 2018:CS_PLATFORM:JServer:WARNING:821:::::Polling of the Data Mover in slot 2 has been shut down.
+Oct  2 15:13:43 2018:DART:DRIVERS:WARNING:5:Slot 3:::1538485984:cge-1-0: link up
+Oct  2 15:13:43 2018:DART:USRMAP:INFO:2:Slot 3:::1538485984:Usermapper service has been enabled.
+Oct  2 15:13:43 2018:DART:DRIVERS:WARNING:5:Slot 3:::1538485984:cge-1-1: link up
+Oct  2 15:13:43 2018:DART:DRIVERS:WARNING:3:Slot 3:::1538485987:trk0: link up LACP
+Oct  2 15:13:43 2018:DART:CEPP:NOTICE:3:Slot 3:::1538485987:The CEPP facility is started.
+
+AR 976499 was created
+
+================================================
+CIFS SHARE
+Now access for \\vnxaccord.grupa.lukas\dept$ is OK
+FILE SYSTEM AND VDM
+[nasadmin@nascs03a ~]$ nas_fs -list|grep -i accord
+187       y    n         1   0     546      accord_usr_fs        v8
+195       y    n         1   0     551      accord_grp_fs        v8
+[nasadmin@nascs03a ~]$ nas_replicate -list|grep -i accord
+repl_accord_vdm           vdm        server_2                  -->WROC_POZ          nascs03b     OK
+repl_accord_usr_fs        filesystem server_2                  -->WROC_POZ          nascs03b     OK
+repl_accord_grp_fs        filesystem server_2                  -->WROC_POZ          nascs03b     OK
+[nasadmin@nascs03a ~]$
+
+[nasadmin@nascs03a ~]$ nas_server -list -all
+id      type  acl  slot groupID  state  name
+1        1    0     2              0    server_2
+2        4    0     3              0    server_3
+
+id       acl  server    mountedfs       rootfs  name
+7        0    1         54,3340,3341    53      vdm_vmdata
+8        0    1         187,189,190,195 70      vdm_accord
+
+==================================================
+
+[nasadmin@nascs03b ~]$ server_cifssupport vdm_accord -accessright -name mostrowski -domain grupa.lukas -path /accord_grpfs/data
+vdm_accord :
+Error 0: vdm_accord : Invalid error code [0 Accessing the file /accord_grpfs/data has resulted in the file system error 7:NotFound.
+]
+[nasadmin@nascs03b ~]$
+
+=================================================
+
+[nasadmin@nascs03b ~]$ server_cifssupport vdm_accord -cred -name mostrowski -domain grupa.lukas -build
+vdm_accord : done
+
+ACCOUNT GENERAL INFORMATION
+
+Name                     : mostrowski
+Domain                   : GRUPA
+Server                   : VNXACCORD
+Primary SID              : S-1-5-15-22cdb7b4-70294ee-320a1743-2518
+UID                      : 32769
+GID                      : 32768
+Authentification         : NTLM
+Privileges               : 0x7f
+                         : 0x00001  => SeTakeOwnerShip
+                         : 0x00002  => SeBackup
+                         : 0x00004  => SeRestore
+                         : 0x00008  => SeChangeNotify
+                         : 0x00010  => SeAudit
+                         : 0x00020  => SeIncreaseQuota
+                         : 0x00040  => SeSecurity
+System privileges        : 0x1
+                         : 0x00001  => SysOpenLocally
+Extra credential data    : 0xe
+                         : 0x00002  => Bypass Traverse Checking
+                         : 0x00004  => Security
+                         : 0x00008  => Backup Or Restore Privileges
+NT administrator         : True
+NT credential capability : 0x0
+
+ACCOUNT GROUPS INFORMATION
+
+Type UNIX ID    Name                Domain              SID
+NT   32770      Domain Admins       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-200
+NT   32797      Domain Users        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-201
+NT   32803      Administratorzy_    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-b6d
+NT   32817      Administratorzy_    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-b73
+NT   32821      Skryptowa-AD        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-c77
+NT   32807      LB_ADM1             GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-17f6
+NT   32811      LB_ADMB             GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-17fa
+NT   32815      PROMOCJAProfil_O    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1842
+NT   32771      ADGroup             GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1889
+NT   32794      ORG_Administrato    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19a4
+NT   32795      Polisa-Admin        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19b5
+NT   32779      Polisa-UserPrimi    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19b6
+NT   32792      REZSALFULLFSR       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19e8
+NT   32802      SOWA_Administrat    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19f3
+NT   32814      SOWA_Tester         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-19f4
+NT   32808      WNK_POZ_PCOP        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1a2d
+NT   33113      Internet-Standar    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1afd
+NT   32796      PROCRBFULLFS        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1b7b
+NT   32805      CPDFULLFS           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-713d
+NT   32776      PasswdMgrFS         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-7c13
+NT   33003      MS61ARCFULLFS       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-41882
+NT   32786      PKI SMIME Users     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-4f0cc
+NT   32790      UTILFULLFS          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-50219
+NT   32818      PKI Smartcard Ce    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-506ed
+NT   32787      gwGroup             GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-5096b
+NT   32783      SKRZYNKAFS          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6cef6
+NT   32782      SSOStore            GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6d0ff
+NT   32800      NWMSLX-AD           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6d14e
+NT   32806      INSTFS              GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6d331
+NT   33842      caipll01-r1_fsr     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6d353
+NT   33511      caipll01-r2_fsr     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-6d354
+NT   32812      ConsoleOne          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-929a6
+NT   33554      exportToGIIF-RW     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-f7ed5
+NT   33547      import_files-RW     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-f7ed6
+NT   34832      dimon_files-RO      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-f7ede
+NT   35710      import_files-RO     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-f7ee1
+NT   32813      C1_Primary          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-112623
+NT   32772      LOGS_LOGSRO         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11290c
+NT   33016      LOGS_OFFICESCANR    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-112956
+NT   32791      LUKDRIVEFULLFS      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-112d46
+NT   34898      F03RAPB10FS         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-113d7f
+NT   32816      CPDRAPFS            GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-114239
+NT   32784      deamonDVgrp         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-114545
+NT   32819      deamonTSgrp         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-114546
+NT   32789      deamonCCgrp         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-114548
+NT   33045      LOGS_WYCSMTPRO      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1145b5
+NT   32810      SCOM Admins         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-114c56
+NT   32831      AnalizaKontAD       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1153bf
+NT   32842      CSAdministrator     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1155a8
+NT   33802      LOGS_MIDCORPOSQL    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1155e0
+NT   33619      EXG_Administrato    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1156ba
+NT   32844      Organization Man    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1159e0
+NT   36216      PBFULLFS            GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-115b0d
+NT   32778      CPD                 GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-115b4e
+NT   32822      SPITDDUIT           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11639c
+NT   32804      UAG_OWA_Ext_User    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1171da
+NT   33931      PasswdMgrIBMFS      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1173c6
+NT   36824      INSTLINUXFSR        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11745a
+NT   39274      IT_Mapa_Systemow    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1174bc
+NT   39294      DDUIT_Infrastruk    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1179db
+NT   40087      LOGS_CALLCENTERR    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-117ef7
+NT   40088      LOGS_CALLCENTERR    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-117ef8
+NT   40089      LOGS_POWER7RO       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-117ef9
+NT   40121      LOGS_INFRASTRUCT    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-117f38
+NT   41607      testsamba           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119054
+NT   35711      ADM_VNXLOGS         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1190ef
+NT   35712      ADM_VNXJIRA         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1190f0
+NT   40899      UagInsp-Sessions    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11942d
+NT   40921      UagInsp-MacAddrs    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11942e
+NT   40922      UagInspTest-Sess    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11942f
+NT   40920      UagInspTest-MacA    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119430
+NT   34010      VMFL_ITG2_GA        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1195a1
+NT   41088      DDUITFULLFS         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119a5e
+NT   42291      LOGS_K2WL_AIXRO     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119d92
+NT   42290      LOGS_K2WL_SUN       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119d93
+NT   42292      LOGS_SUNRO          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-119d94
+NT   33426      UsbAllow            GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11a6df
+NT   35074      SMB_CVPLXDW01_OR    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11b5ea
+NT   33427      MDB10_20140814      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11b6fa
+NT   42983      LOGS_CISRO          GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11b74e
+NT   33730      TRLOG-RO            GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11b790
+NT   34041      DDUIT-NWMSLX        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11b99f
+NT   43222      Ratluk-P-serwer     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11be0e
+NT   34057      VMFL_TR3_GA         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11bec7
+NT   34061      SPID10PRD_USERS     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11c1a1
+NT   43405      LOGS_CALLCENTERC    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11c21d
+NT   43008      LOGS_AIX_MT_RO      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11c3db
+NT   43009      LOGS_AIX_SMW2_RO    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11c3dd
+NT   33430      VPN_ADMIN           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11c504
+NT   43876      Orchestrator Adm    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11cc4c
+NT   33781      PRELOG-RO           GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11d5f1
+NT   33432      Internet-Rozszer    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11e057
+NT   43877      SMW2_P24WAP023      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11eeea
+NT   43878      SMW2_T14WAP023      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11eeeb
+NT   43464      LOGIOUTFULLFS       GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11f24a
+NT   43541      LOGS_ENERGEIARO     GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11f31d
+NT   43898      DIGITAL_T30_FULL    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11f4f4
+NT   44460      Linux_Admins        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11f7fb
+NT   43649      GPRemote2016FULL    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-11f828
+NT   44624      SMEX_Admins         GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-1204d4
+NT   45370      USR_WULXUpdate      GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-120cbd
+NT   44777      Privileged_Users    GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-120e70
+NT   44962      Internet-FTP        GRUPA               S-1-5-15-22cdb7b4-70294ee-320a1743-120fef
+NT   4294967294 Everyone                                S-1-1-0
+NT   4294967294 NETWORK             NT AUTHORITY        S-1-5-2
+NT   4294967294 ANONYMOUS LOGON     NT AUTHORITY        S-1-5-7
+NT   2151678496 Administrators      BUILTIN             S-1-5-20-220
+NT   2151678497 Users               BUILTIN             S-1-5-20-221
+NT   1          UNIX GID=0x1 &ap                        S-1-5-12-2-1
+UNIX 32770
+UNIX 32797
+UNIX 32803
+UNIX 32817
+UNIX 32821
+UNIX 32807
+UNIX 32811
+UNIX 32815
+UNIX 32771
+UNIX 32794
+UNIX 32795
+UNIX 32779
+UNIX 32792
+UNIX 32802
+UNIX 32814
+UNIX 32808
+
+===============================================
+accord03.grupa.lukas(172.16.200.13)
+CA41040.grupa.lukas(172.16.50.104)
+===============================================
+[nasadmin@nascs03a ~]$ server_cifssupport vdm_appdata -accessright -name mostrowski -domain grupa.lukas -path /appdata_fs/data/Lyncshare2
+vdm_appdata : done
+
+ACCOUNT GENERAL INFORMATION
+
+Name                     : mostrowski
+Domain                   : GRUPA
+Path                     : /appdata_fs/data/Lyncshare2
+Allowed mask             : 0x301ff
+Action                   : List Folder / Read data
+Action                   : Create Files / Write data
+Action                   : Create Folders / Append Data
+Action                   : Read Extended Attributes
+Action                   : Write Extended Attributes
+Action                   : Traverse Folder / Execute File
+Action                   : Delete Subfolders and Files
+Action                   : Read Attributes
+Action                   : Write Attributes
+Action                   : Delete
+Action                   : Read Permissions
+
+===============================================
+
+server_cifssupport vdm_vmdata -accessright -name mostrowski -domain grupa.lukas -path /vmdata_fs/data/VMData01
+
+===============================================
+
+2018-10-02 22:15:35: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 81 times
+2018-10-02 22:18:15: NDMP: 3: Session 306 (thread bkup096) FileHistory::addDirEntry_v4: error sending file history data
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread bkup221) FileHistory::addNodeEntry_v3v4: error sending file history data.
+2018-10-02 22:28:04: NDMP: 7: < Thread ndmp306: error in recvMsg.>
+2018-10-02 22:28:04: NDMP: 7: < Thread ndmp306: EOF encountered for this connection in processMessages.>
+2018-10-02 22:28:04: NDMP: 7: Thread ndmp306 Pax data module abort command
+2018-10-02 22:28:04: NDMP: 6: Thread nass00 Aborting is detected right before fts_read.
+2018-10-02 22:28:04: NDMP: 4: Got stat buffer with data pointer=NULL at 1600, abort=1
+2018-10-02 22:28:04: NDMP: 10: Thread nass00 Abort is detected right after getting stat buffer.
+2018-10-02 22:28:04: NDMP: 10: last message repeated 101 times
+2018-10-02 22:28:04: NDMP: 10: Thread nass00 Abort is detected right after getting stat buffer.
+2018-10-02 22:28:04: NDMP: 10: last message repeated 23 times
+2018-10-02 22:28:04: NDMP: 4: Thread bkup155 Backup was aborted
+2018-10-02 22:28:04: NDMP: 4: < LOG type: 3, msg_id: 0, entry: Backup was aborted, hasAssociatedMsg: 0, associatedMsgSeq: 0 >
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread bkup155) NdmpdSession::ndmpdApiLog() error (NDMP v4) with log type: 3, log buf: Backup was aborted
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 Backup root directory: /root_vdm_1/Employee-HD
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 write count 1946353664
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 time used 863 sec
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 write rate 2202 KB/Sec
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 read rate 0 KB/Sec
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 average file size: 4762KB
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 dir  or   0  size file processed: 73
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00   1B -- 8KB  size file processed: 4
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00  8KB -- 16KB size file processed: 4
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 16KB -- 32KB size file processed: 20
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 32KB -- 64KB size file processed: 15
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 64KB -- 1MB  size file processed: 181
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00  1MB -- 32MB size file processed: 96
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 32MB -- 1GB  size file processed: 13
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00    1G more   size file processed: 0
+2018-10-02 22:28:04: NDMP: 6: Thread nasa00 server_archive: emctar vol 1, 406 files, 0 bytes read, 1946353664 bytes written
+
+2018-10-02 22:28:04: NDMP: 10: < LOG type: 0, msg_id: 0, entry: server_archive: emctar vol 1, 406 files, 0 bytes read, 1946353664 bytes written
+, hasAssociatedMsg: 0, associatedMsgSeq: 0 >
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread nasa00) NdmpdSession::ndmpdApiLog() error (NDMP v4) with log type: 0, log buf: server_archive: emctar vol 1, 406 files, 0 bytes read, 1946353664 bytes written
+
+2018-10-02 22:28:04: NDMP: 4: Got stat buffer with data pointer=NULL at 1600, abort=1
+2018-10-02 22:28:04: NDMP: 10: Thread nass00 Abort is detected right after getting stat buffer.
+2018-10-02 22:28:04: NDMP: 4: Thread nasa00 cifs_ea new count: 13067413993, delete count: 13067413985, freeListCount: 522
+2018-10-02 22:28:04: NDMP: 3: Thread nasa00 Backup is aborted.
+2018-10-02 22:28:04: NDMP: 3: < LOG type: 2, msg_id: 0, entry: Backup is aborted., hasAssociatedMsg: 0, associatedMsgSeq: 0 >
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread nasa00) NdmpdSession::ndmpdApiLog() error (NDMP v4) with log type: 2, log buf: Backup is aborted.
+2018-10-02 22:28:04: NDMP: 10: Thread nasa00 Pax data module done, status :1
+2018-10-02 22:28:04: PAX: 4: Thread nasa00 used these threads for this job: bkup096 bkup209 bkup220 bkup006 bkup060 bkup074 bkup152 bkup217 bkup207 bkup085 bkup114 bkup244 bkup049 bkup097 bkup125 bkup167 bkup043 bkup249 bkup073 bkup026 bkup221 bkup086 bkup084 bkup012 bkup169 bkup010 bkup253 bkup046 bkup028 bkup117 bkup048 bkup233 bkup193 bkup078 bkup045 bkup165 bkup075 bkup163 bkup182 bkup064 bkup199 bkup151 bkup236 bkup050 bkup226 bkup246 bkup155 bkup030 bkup095 bkup202 bkup001 bkup205 bkup120 bkup187 bkup034 bkup170 bkup122 bkup197 bkup175 bkup216 bkup234 bkup215 bkup231 bkup007 
+2018-10-02 22:28:04: NDMP: 7: < DATA halt reason: NDMP_DATA_HALT_ABORTED >
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread nasa00) ndmpdApiDone: error sending notify_halted request.
+2018-10-02 22:28:04: NDMP: 7: Session 306 (thread nasa00) NdmpdData::closeMoverSocket, AbortCloseStream close data moverSock (0x03296513a0).
+2018-10-02 22:28:04: NDMP: 7: Session 306 (thread nasa00) NdmpdData::closeMoverSocket, Data moverSock (0x03296513a0) closed, Mover sock=0x03296513a0.
+2018-10-02 22:28:04: NDMP: 7: (thread nasa00) releaseBuffer in mover init (), buf 0x0342400000
+2018-10-02 22:28:04: NDMP: 10: Thread nasa00 **** SIGNAL PAX_NOTIFY_END ****
+2018-10-02 22:28:04: NDMP: 7: Thread nasw00 rw_thread rec. PAX_NOTIFY_END
+2018-10-02 22:28:04: NDMP: 7: Total nass fts_build time: 108782 msec
+2018-10-02 22:28:04: NDMP: 10: Thread nasa00 PAX_THR  WHILE
+2018-10-02 22:28:04: NDMP: 7: Session 306 (thread ndmp306) will end the connection (0x038645de08) due to EOF, data and mover will be aborted.
+2018-10-02 22:28:04: NDMP: 10: Thread nasa00 PAX_THR ACTION = 0
+2018-10-02 22:28:04: CMD: 6: snapDelete: deleting snap /root_vdm_1/automaticNDMPCkpts/automaticTempNDMPCkpt2600-18-1538536400 ..
+2018-10-02 22:28:04: NDMP: 6: Cleanup: Active NDMP backup/restore sessions back to: 0, system configured concurrent streams: 4, maximum concurrent sessions allowed: 8.
+
+======================
+12156566 - Avamar
+AR#877962
+filehistory::adddirentry_v4: error sending file history data 
+
+2018-10-02 22:15:35: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 81 times
+2018-10-02 22:18:15: NDMP: 3: Session 306 (thread bkup096) FileHistory::addDirEntry_v4: error sending file history data
+2018-10-02 22:28:04: NDMP: 3: Session 306 (thread bkup221) FileHistory::addNodeEntry_v3v4: error sending file history data.
+2018-10-02 22:28:04: NDMP: 7: < Thread ndmp306: error in recvMsg.>
+2018-10-02 22:28:04: NDMP: 7: < Thread ndmp306: EOF encountered for this connection in processMessages.>
+2018-10-02 22:28:04: 154890600452: NDMP: 4: Thread bkup175 encountered EOF for this connection before sending 0x704, message_type=0.
+2018-10-02 22:28:04: 13156679680: NDMP: 3: Session 306 (thread bkup175) FileHistory::addDirEntry_v4: error sending file history data
+2018-10-02 22:28:04: 154890600452: NDMP: 4: Thread bkup175 encountered EOF for this connection before sending 0x705, message_type=0.
+2018-10-02 22:28:04: 13156679680: NDMP: 3: Session 306 (thread bkup175) FileHistory::addNodeEntry_v3v4: error sending file history data.
+2018-10-02 22:28:04: 154890600452: NDMP: 4: Thread bkup234 encountered EOF for this connection before sending 0x704, message_type=0.
+
+
+SOURCE 
+accord_usr_fs on /accord_usrfs uxfs,perm,rw
+accord_grp_fs on /accord_grpfs uxfs,perm,rw
+Source Filesystem              = accord_usr_fs
+Destination Filesystem         = accord_usr_fs
+
+DESTINATION
+accord_usr_fs on /accord_usr_fs uxfs,perm,ro
+accord_grp_fs on /accord_grp_fs uxfs,perm,ro
+Source Filesystem              = accord_grp_fs
+Destination Filesystem         = accord_grp_fs
+
+=====================
+12310847
++check if this array is 64 or 32 bit
++check if services is running for FARM is running
++refer to https://support.emc.com/docu84177_VMAX-eNAS-8.1.12.27-File-Auto-Recovery-with-SRDF-S.pdf?language=en_US
++check eventviewer
+
+======================
+
+10.20.0.74
+
+======================
+This issue seems to be related to 0 TCP window size issue.To further analyze, please collect Network trace using the tcpdump script and the last log. 
+Make sure that all the debugs are default (LOG_PRINTF). No debug for PAX, NDMP, VBB or any other components. otherwise, we will lose server log and 
+tcpdump will not work properly. 
+1. Start the NDMP backup.
+2) Run the server_netstat <server_x> -a |grep 100003) Start the network trace filtering on 
+the backup server IP.
+./tcpdump_loop.sh server_2 -start <network interface> -w <FS mountpoint> -t 500000 -n 20 -host <IP of backup server> -u 30 -p "error sending file history data"<network interface> 
+will be the device on data mover (server_ifconfig command) which hosts the IP address seen in step number 2 (port 10000 side)<ip address of the backup server> 
+is the IP address from step number 
+
+2. The File system mentioned about should have enough space to host 20, 500MB files (10GB). We are not expecting much 
+traffic anyway because they have local tape drives. The tcpdump will stop when it see the pattern "error sending file history data". It will quit as well 
+as it will do a server_log in /home/nasadmin/server_log_tcpdump*
+4) collect the traces and server log will put the tcpdumploop some where accessible and 
+update the AR soon. The tcpdump loop script is placed at ->    /disks/CTD_Field6/877xxx/877962_DOLPHIN_INTEGRATION_SA/2016-12-13_03-56-rwxr-xr-x  1 subras19 media     10604 Dec 22 04:25 tcpdump_loop.sh 
+When Copying files across from Windows, please be careful about the ^M (carriage return). It is better run the dos2unix <script> in control station. 
+
+
+1. On the server log, we observed the Network error 
+:2016-12-28 20:58:17: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 238 times2016-12-28 20:58:18: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 239 times2016-12-28 20:58:19: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 240 times 
+ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<RETRY2016-12-28 20:58:20: 
+ NDMP: 3: Network error, writeIt() fail for SendStreamNoWait() error, status=11, sock=0x01bdef9a20, mp=0x000c8f7ed0  
+ <<<<<< Network error
+ We log these when we're trying to write data to the NDMP connection, but the remote host isn't (usually temporarily) processing the data we're sending, and we're indirectly being asked to "pause" 
+ sending data for a while.  Usually that means they're busy doing something. This might be an indication that the backup server gets very slow at times for other reasons.  
+ It most likely indicate a problem with the customer's network itself2. From the Network Trace, when checked the traffic between the "192.168.1.229" (Data mover) and the "192.168.1.150" (Backup server), 
+ the backup server is sending TCP Zero Window.Please check why Backup server is advertising 0 TCP Window at the backup failure time. 
+ 
+ 3. Also from the log we could see 
+ the error message:2016-12-28 20:33:57: NDMP: 4: Thread bkup120 Unable to get fnn from file handle>>>> during NDMP backup running through a large file system with many 
+ files hung. The backup hung after the backup server attempted to abort and restart the backup. The backup threads started to terminate immediately after the backup 
+ restarted and the transfer rate showed as 0 kbs.>>>>>> This is a known issue in 7.1.x -> this issue is fixed in 7.1.80.14. Also we could see CAM and I/O errors, 
+ please check the Backend Array of both source and destination data.***********************Summary:
+ 1. This issue seems to be due to Network problem at the Backup server. 
+ 
+ And it might be happening only on the specific FS data because that File system might be huge or might have many files to backup. Try to fine tune the TCPkeepalive 
+ parameter.
+ 2. There are two datamover parameters that needs to be fine tuned:
+ I) NDMP.retrySendStreamInterval is set for retry interval when tcp send stream fail. 
+ This internal param is used for some special network. Default value for this param is 1000(1 second)
+ II) NDMP.retrySendStreamTimes is set for retry times when tcp send stream fail. 
+ This internal param is used for some special network. Default value for this param is 240. After 240 seconds, the datamover would fail the backup
+ III) Also set the cifs.tcp.hiwat to 512KB and cifs.smb2.largeReadWriteSize to 256KB-Sangeetha
+ 
+ [nasadmin@SwedishFish ~]$ server_param server_2 -facility NDMP -list
+server_2 :
+param_name                       facility  default     current   configured
+maxProtocolVersion                  NDMP          4          4
+scsiReserve                         NDMP          0          0          0
+CDBFsinfoBufSizeInKB                NDMP       1024       1024
+bufsz                               NDMP        128        128
+convDialect                         NDMP     8859-1     8859-1
+concurrentDataStreams               NDMP          4          4
+portRange                           NDMP 1024-65535 1024-65535
+includeCkptFs                       NDMP          1          1
+md5                                 NDMP          1          1
+snapTimeout                         NDMP          5          5          5
+dialect                             NDMP
+forceRecursiveForNonDAR             NDMP          0          0
+tapeSilveringStr                    NDMP         ts         ts
+excludeSvtlFs                       NDMP          1          1
+snapsure                            NDMP          0          1          1
+v4OldTapeCompatible                 NDMP          1          1
+
+-------------------------------------------------------------------------------
+Also check for retransmits
+need IP of the DD
+check the script for collecting server_logs
+================================================================================
+
+[nasadmin@cocsvmavnxcs0 ~]$ server_export server_2
+server_2 : 
+export "/data" rw=192.168.113.0/26 root=192.168.113.0/26 access=192.168.113.0/26
+export "/" anon=0 access=128.221.252.100:128.221.253.100:128.221.252.101:128.221.253.101
+
+[nasadmin@cocsvmavnxcs0 ~]$ 
+
+========================
+
+./tcpdump_loop.sh server_2 -start <network interface> -w <FS mountpoint> -t 500000 -n 20 -host <IP of backup server> -u 30 -p "error sending file history data"
+
+========================
+
+slot_2 panic
+
+Oct  5 17:20:07 2018:CS_PLATFORM:BoxMonitor:CRITICAL:302:::::Slot 2 has panicked.
+Oct  5 17:20:12 2018:CS_PLATFORM:BoxMonitor:DEBUG:905:::::Slot 2 recover_slot /nas 2 has started.
+Oct  5 17:20:39 2018:DART:USRMAP:INFO:2:Slot 3:::1538753160:Usermapper service has been enabled.
+Oct  5 17:20:49 2018:DART:VC:WARNING:3:Slot 3:::1538752842: low water mark reached.
+
+
+
+2018-10-05 21:30:02: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 111
+2018-10-05 21:30:02: KERNEL: 3: h=0x031e75fd60 owner=0x0105b26d60 IT=512, RTmutex=1, RTthread=0, SPL=1
+2018-10-05 21:30:02: KERNEL: 3: Thread=0x0105b26d60:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+2018-10-05 21:30:03: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:03: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x3
+2018-10-05 21:30:03: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:03: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x2
+2018-10-05 21:30:04: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:05: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 110
+2018-10-05 21:30:05: KERNEL: 3: h=0x0080de2360 owner=0x0105b26d60 IT=512, RTmutex=1, RTthread=0, SPL=1
+2018-10-05 21:30:05: KERNEL: 3: Thread=0x0105b26d60:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+2018-10-05 21:30:05: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 111
+2018-10-05 21:30:05: KERNEL: 3: h=0x0089b6f6e0 owner=0x0105b26d60 IT=512, RTmutex=1, RTthread=0, SPL=1
+2018-10-05 21:30:05: KERNEL: 3: Thread=0x0105b26d60:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+2018-10-05 21:30:05: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x2
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x2
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x4
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x3
+2018-10-05 21:30:06: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x5
+2018-10-05 21:30:07: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+2018-10-05 21:30:07: UFS: 6: releaseOrCommit: forced transaction complete 1798
+2018-10-05 21:30:07: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 110
+2018-10-05 21:30:07: KERNEL: 3: h=0x04b5a27540 owner=0x0105b26d60 IT=512, RTmutex=1, RTthread=0, SPL=1
+[nasadmin@CANASSR2 ~]$
+
+-------------------------
+AR#964292
+-------------------------
+
+China 1330044605
+India 1147995898
+United States 303824646
+
+--------------------------
+I did the test today:
+
+1.	deleted all replications for accord resources 
+2.	deleted all accord resources, VDM and both file systems (only in the backup Data Center)
+3.	on primary CS (nascs03a.lukas) I created the new replications, like below
+#nas_replicate -create repl_accordgrp_fs -source -fs accord_grp_fs -destination -pool eNAS_180_data_SG  -interconnect  WROC_POZ -max_time_out_of_sync 10 -background
+#nas_replicate -create repl_accordusr_fs -source -fs accord_usr_fs -destination -pool eNAS_180_data_SG  -interconnect  WROC_POZ -max_time_out_of_sync 10 -background
+#nas_replicate -create repl_accord_vdm -source -vdm vdm_accord -destination -pool eNAS_180_data_SG -interconnect WROC_POZ -max_time_out_of_sync 10
+4.	when the replication status was OK and Last Sync Time was correct I switch the resources to the second Data Center
+[nasadmin@nascs03a ~]$ nas_replicate -revers repl_accord_vdm
+OK
+[nasadmin@nascs03a ~]$ nas_replicate -revers repl_accordusr_fs
+OK
+[nasadmin@nascs03a ~]$ nas_replicate -revers repl_accordgrp_fs
+OK
+
+On the destination site I saw:
+----------------------------
+Here is another option. 
+
+Please try stop and deleting the file system replication for repl_accordusr_fs, on the destination unmount and fs: accord_usr_fs from server_2 and mount this fs to vdm_accord. 
+
+Then recreate this replication using existing file system accord_usr_fs as shown on the attached screenshot to this email. 
+
+Note: If you are using an existing file system, use the -destination -fs option and specify the file system name or ID.
+
+============================================
+
+Students are successfully able to drop documents to the folder but staff is unable to open or copy the files for grading. 
+NOTE: All this works perfectly when accessed from a PC. It's only on a MAC that this issue happens. 
+We also did identical setup on a Win 2012 R2 server and it works fine from a MAC or PC. 
+
+============================================
+
+Need MAC OS:
+IP/Hostname:
+share name: datastore
+
+VDM08 : 
+share "Test" "/Test/Test" umask=022 maxusr=4294967295 netbios=V8
+share "Datastore" "/Datastore/Datastore" umask=022 maxusr=4294967295 netbios=V8
+share "ExchRestoreLogs" "/Exch2016RestoreLogs/Exch2016RestoreLogs" umask=022 maxusr=4294967295 netbios=V8
+============================================
+old
+80ce021118836f5b46
+new
+80ce0213163610530a
+============================================
+   From initial server_2 dump, it looks like panic occured while nfsv4 client was trying to connect and seems like it was having issue.
+   
+   Just prior to panic in the logs we can see kernel messages pointing to the RPC server-client communication.
+   Also these kernel errors could be a result of data mover trying to connect to the call back path on the client, similar to seen in AR 968649
+   
+   dump shows that the client involved here is "Linux NFSv4.1 ew.probtp", can you please check if there were any connectivity issues seen here.
+   
+   Logs:
+   
+   2018-10-05 17:19:59: 13156810752: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 110
+   2018-10-05 17:19:59: 13156286464: KERNEL: 3: h=0x0105cbc020 owner=0x0105b35750 IT=512, RTmutex=1, RTthread=0, SPL=1
+   2018-10-05 17:19:59: 13156286464: KERNEL: 3: Thread=0x0105b35750:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+   2018-10-05 17:20:01: 13156810752: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 110
+   2018-10-05 17:20:01: 13156286464: KERNEL: 3: h=0x0105cbc020 owner=0x0105b35750 IT=512, RTmutex=1, RTthread=0, SPL=1
+   2018-10-05 17:20:01: 13156286464: KERNEL: 3: Thread=0x0105b35750:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+   2018-10-05 17:20:03: 13156745216: NFS: 3:[CANASVDM6] checkReplay: sequence replay slotid 0 seqid 0x1
+   2018-10-05 17:20:04: 26042433536: UFS: 6: releaseOrCommit: forced transaction complete 1798
+   2018-10-05 17:20:04: 13156810752: RPC: 3: CLIENT::initTcpRpcStream: ConnectStream failed: error 110
+   2018-10-05 17:20:04: 26042433536: UFS: 6: releaseOrCommit: forced transaction complete 1798
+   2018-10-05 17:20:04: 13156286464: KERNEL: 3: h=0x05857a1200 owner=0x0105b35750 IT=512, RTmutex=1, RTthread=0, SPL=1
+   2018-10-05 17:20:04: 13156286464: KERNEL: 3: Thread=0x0105b35750:NFS4_cConfirmer ERROR '((h->h_magic == STREAM_MAGIC_ALLOCATED) && ((h->h_flags & (H_RASYNC|H_TASYNC)) == 0) && Sthread_interruptsEnabled() && (getSplCount() == 0) && (OTHERQ(h->h_queue)->q_waitingReaders == 0) && !Sthread_isRTthread())' on line 3371 in file '../streamif.cxx', callers=0x00004eff6e,0x00004f3cc2,0x00006b9e1e
+
+=============================================
+
+server_tcpdump server_2 -start LACP-01 
+
+/nas/sbin/server_tcpdump server_2 -start LACP-01 -w /root_vdm_12/Datastore/tcpdump.cap -max 500000 -host 10.105.203.157
+
+share "Datastore" "/Datastore/Datastore" umask=022 maxusr=4294967295 netbios=V8
+
+
+[root@PriCSVNX5400 nasadmin]# .server_config server_2 -v "dns query PTR=10.105.203.157"
+server_2 : commands processed: 1
+command(s) succeeded
+output is complete
+
+1539101039: LIB: 6: 10.105.203.157
+1539101039: LIB: 6:  Type:PTR       TTL=3600 s  dataCount:1
+1539101039: LIB: 6:   e842035991ambp0.egusd.net
+1539101039: LIB: 6: ---
+1539101039: ADMIN: 6: Command succeeded:  dns query PTR=10.105.203.157
+
+
+=============================================
+[root@PriCSVNX5400 nasadmin]# server_cifs VDM08
+VDM08 :
+384 Cifs threads started
+Security mode = NT
+Max protocol = SMB3.02
+I18N mode = UNICODE
+CIFS service of VDM VDM08 (state=loaded)
+Home Directory Shares DISABLED
+Usermapper auto broadcast enabled
+
+Usermapper[0] = [127.0.0.1] state:active (auto discovered)
+
+Enabled interfaces: (All interfaces are enabled)
+
+Disabled interfaces: (No interface disabled)
+
+Unused Interface(s):
+ if=ndmpclient l=10.100.0.201 b=10.100.3.255 mac=0:60:16:58:d4:a2
+
+
+DOMAIN EGUSD.EDU FQDN=egusd.net SITE=TriggEdCenter RC=14
+ SID=S-1-5-15-7fd40481-30113fb5-36d3a78-ffffffff
+>DC=WASHINGTON(10.100.0.60) ref=77 time=1 ms (Closest Site)
+>DC=GRANT(10.100.0.100) ref=97 time=1 ms (Closest Site)
+ DC*FILLMORE(10.100.4.8) ref=106 time=0 ms (Closest Site)
+ DC=REAGAN(10.100.0.128) ref=197 time=1 ms (Closest Site)
+
+CIFS Server V8[EGUSD.EDU] RC=987 (local users supported)
+ Full computer name=v8.egusd.net realm=EGUSD.NET
+ Comment='EMC-SNAS:T8.1.9.232'
+ if=V8 l=10.100.1.78 b=10.100.3.255 mac=0:60:16:58:d4:a2
+  FQDN=v8.egusd.net
+ Password change interval: 0 minutes
+ Last password change: Mon May 16 22:15:55 2016 GMT
+ Password versions: 2
+
+/Datastore/Datastore
+ 
+======================
+need serial
+
+1.1.0 6SL86J22
+1.7.1 6SL83YP4
+0.4.11 CZXZUTXN
+
+        Raid          Drive                                                                                                                  Cur   Max Drive Drive    Wear
+Disk    Group Capacity Intfc         Vendor     Drive Type     Serial Number    Part Number  TLA Number    Firmware   State       Replacing Speed Speed   Age Uptim  Remain
+
+0.4.11    402    600GB SAS           SEAGATE    Eagle          6SL86J22         118032656    005049274     ES10       Enabled     --            6     6                    
+1.7.1     461    600GB SAS           SEAGATE    Eagle          6SL83YP4         118032656    005049274     ES10       Enabled     --            6     6                    
+1.1.0     482    600GB SAS           HITACHI    Viper-C        CZXZUTXN         118032693    005049675PWR  C840       Enabled     --            6     6                    
+2.7.2     457    600GB SAS           SEAGATE    Eagle          6SL7XGGG         118032656    005049274     ES10       Enabled     --            6     6                    
+
+======================
+[nasadmin@vnxrh01cs0 ~]$ /nas/sbin/navicli -h spa faults -list
+Faulted Subsystem:  vnxrh01
+
+Bus 0 Enclosure 4 : Faulted
+Bus 0 Enclosure 4 Disk 11 : Removed
+Bus 2 Enclosure 7 : Faulted
+Bus 2 Enclosure 7 Disk 2 : Removed
+Bus 1 Enclosure 7 : Faulted
+Bus 1 Enclosure 7 Disk 1 : Removed
+Bus 1 Enclosure 1 : Faulted
+Bus 1 Enclosure 1 Disk 0 : Removed
+
+Bus 1 Enclosure 1 Disk 0
+Bus 1 Enclosure 7 Disk 1
+Bus 2 Enclosure 7 Disk 2
+Bus 0 Enclosure 4 Disk 11
+
+======================
+
+919742340651
+
+File System name:fs2176
+Share name: ncap_stress
+
+EXPORT:
+
+export "/fs2176/ncap_stress" name="/ncap_stress" root=xsroot:mtllinas002 access=allnfs:mtllinas002 comment="ncap_stress - Roberto_de_Palma"
+share "ncap_stress" "/fs2176/ncap_stress/data/ncap_stress" umask=022 maxusr=4294967295 type=Global netbios=MTLCINAS010 comment="ncap_stress"
+
+FILE SYSTEM MOUNT:
+
+fs2176 on /fs2176 uxfs,perm,rw,accesspolicy=MIXED
+
+CIFS SERVER:
+
+CIFS Server MTLCINAS010[AERO] RC=575
+ Full computer name=mtlcinas010.aero.aero.bombardier.net realm=AERO.AERO.BOMBARDIER.NET
+ Comment='EMC-SNAS:T8.1.9.15505'
+ if=MTLCINAS010_FSN0 l=172.19.98.207 b=172.19.98.255 mac=0:60:16:69:7b:1a
+  FQDN=mtlcinas010.aero.aero.bombardier.net (Updated to DNS)
+ Password change interval: 0 minutes
+ Last password change: Sun Sep  6 06:58:15 2015 GMT
+ Password versions: 3
+ 
+======================
+
+***** #techrvw only, please contact the case owner for more info *****
+I connected to the array over ESRS in order to investigate. 
+Currently the share is exported and file system is mounted on server_2. 
+The FS is set to use a mixed access policy which means if the windows permissions change it will update the unix permissions. 
+ -If the customer is changing the permissions on the file then this is expected behavior. 
+
+The customer is using NIS to map users. The data mover has 1 NIS server online and I don't see any issues with the connection.
+The server_logs are reporting errors for the NIS_user_cache is full. Users will still be able to connect but may experience latency.
+ -KB 460929.
+
+Evidence
+
+-FS mount on server_2 uses a mixed access policy
+fs2179 on /fs2179 uxfs,perm,rw,accesspolicy=MIXED
+
+-Exports on the file system. 
+nasadmin VG50CA [ ~ ]$ server_export server_2 |grep 2179
+export "/fs2179/stress" name="/stress" root=xsroot:mtllinas002 access=allnfs:mtllinas002 comment="stress"
+share "stress" "/fs2179/stress/data/stress" umask=022 maxusr=4294967295 type=Global netbios=MTLCINAS010 comment="stress"
+
+-CIFS server
+CIFS Server MTLCINAS010[AERO] RC=638
+ Full computer name=mtlcinas010.aero.aero.bombardier.net realm=AERO.AERO.BOMBARDIER.NET
+ Comment='EMC-SNAS:T8.1.9.15505'
+ if=MTLCINAS010_FSN0 l=172.19.98.207 b=172.19.98.255 mac=0:60:16:69:7b:1a
+ FQDN=mtlcinas010.aero.aero.bombardier.net (Updated to DNS)
+ Password change interval: 0 minutes
+ Last password change: Sun Sep 6 06:58:15 2015 GMT
+ Password versions: 3
+
+nasadmin VG50CA [ ~ ]$ server_nis server_2
+server_2 :
+yp domain=ecs.canadair.ca server=172.19.84.100 server=172.19.84.221 server=172.19.84.167
+
+nasadmin VG50CA [ ~ ]$ server_nis server_2 -status -all
+server_2 :
+NIS ecs.canadair.ca context (6):
+ Servers:
+ 172.19.84.100 RPC failure
+ 172.19.84.221 RPC failure
+ 172.19.84.167 Online (current server)
+
+-Errors in the server_log for the NIS cache being full. 
+2018-10-11 13:45:05: SECURITY: 3: DBMSCache::setUser - failed to insert to user table, status=DB_NOTFOUND: No matching key/data pair found.
+2018-10-11 13:45:05: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-11 13:45:05: SECURITY: 3: DBMSCache::setUser - failed to insert to user table, status=DB_NOTFOUND: No matching key/data pair found.
+2018-10-11 13:45:05: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-11 13:45:05: SECURITY: 3: DBMSCache::setUser - failed to insert to user table, status=DB_NOTFOUND: No matching key/data pair found.
+2018-10-11 13:45:23: SMB: 3: NT_Access_Credential::RequestFromSID:usr=AERO\k0548387 primary nt group not mapped, use unix primary
+2018-10-11 13:45:33: LIB: 3: DNS update ERROR: Primary name server not found while registering mtlciutl002.aero.aero.bombardier.net
+2018-10-11 13:45:48: SMB: 3: NT_Access_Credential::RequestFromSID:usr=AERO\b0602455 primary nt group not mapped, use unix primary
+2018-10-11 13:46:39: SMB: 3: NT_Access_Credential::RequestFromSID:usr=AERO\jv073828 primary nt group not mapped, use unix primary
+2018-10-11 13:46:39: SMB: 3: last message repeated 1 times
+
+nasadmin VG50CA [ ~ ]$ server_param server_2 -f security -i maxNISCacheUsersCount
+server_2 :
+name = maxNISCacheUsersCount
+facility_name = security
+default_value = 10000
+current_value = 10000
+configured_value =
+user_action = reboot DataMover
+change_effective = reboot DataMover
+range = (10,1000000)
+description = Maximum count of users in NIS Cache.
+
+Timetable
+
+-We need the customer to provide more info about the issue and examples of files so we can compare the ACL on the array. 
+Please have the customer answer the following questions. 
+
+1. When a user access a file in Windows, what does the Unix permissions get changed to?
+ -Does the file ownership also change or is it only the mode bits?
+2. Is the Windows user also editing the Windows permissions when this issue occurs?
+3. What is the name a windows user and Unix user currently having the issue?
+4. What is the name and path of a file where the issue occurs?
+5. Did anything change recently in the environment or on the array?
+
+nasadmin VG50CA [ ~ ]$ server_cifssupport server_2 -acl -share ncap_stress
+server_2 : done
+
+ACL DUMP REPORT
+
+Share        : ncap_stress
+UID          : 307391
+GID          : 403
+Rights       : rwxr-xr-x
+owner SID    : S-1-5-15-cd0957bf-f979e51b-3238bcc0-21df4
+group SID    : S-1-5-12-2-193
+
+DACL
+
+ALL S-1-1-0
+ALLOWED 0x0 0x1301bf RWX-D-
+nasadmin VG50CA [ ~ ]$ server_cifssupport server_2 -acl -path /fs2176/ncap_stress/data/ncap_stress
+server_2 : done
+
+ACL DUMP REPORT
+
+Path         : /fs2176/ncap_stress/data/ncap_stress
+UID          : 7551
+GID          : 1111
+Rights       : rwxr-xrwx
+owner SID    : S-1-5-12-1-1d7f
+group SID    : S-1-5-12-2-457
+
+DACL
+
+GROUP 30061 S-1-5-12-2-756d
+DENIED 0x0 0x63 RWX---
+
+ALL S-1-1-0
+ALLOWED 0x0 0x1200a9 R-X---
+
+USER 3333 S-1-5-15-cd0957bf-f979e51b-3238bcc0-51e1
+ALLOWED 0x3 0x1301bf RWX-D-
+
+GROUP 1111 S-1-5-12-2-457
+ALLOWED 0x0 0x1200a9 R-X---
+
+USER 0 S-1-5-15-cd0957bf-f979e51b-3238bcc0-202b3
+ALLOWED 0x0 0x1601ff RWXP--
+
+WELLKNOWN S-1-5-12
+ALLOWED 0x13 0x1f01ff RWXPDO
+
+GROUP 2160067104 S-1-5-20-220
+ALLOWED 0x13 0x1f01ff RWXPDO
+
+GROUP 2160067105 S-1-5-20-221
+ALLOWED 0x13 0x1200a9 R-X---
+
+GROUP 2160067105 S-1-5-20-221
+ALLOWED 0x12 0x4 -W----
+
+GROUP 2160067105 S-1-5-20-221
+ALLOWED 0x12 0x2 -W----
+
+USER 0 S-1-5-15-cd0957bf-f979e51b-3238bcc0-202b3
+ALLOWED 0x10 0x1f01ff RWXPDO
+
+WELLKNOWN S-1-3-0
+ALLOWED 0x1b 0x10000000 RWXPDO
+nasadmin VG50CA [ ~ ]$ ll -ltr /nas/quota/slot_2/fs2176/ncap_stress/data/ncap_stress
+total 435560
+-r-xr-----  1 1426 1111  88486912 May 24  2009 Meeting TCCA Montreal May 21 2009.ppt
+drwxrwx---  2 1426 1114        80 Jan 28  2010 4.Supplier
+drwxrwxrwx  6 1426 1112      1024 Sep  3  2014 3.Supplier_TAA
+-rwxrwx---  1 2754  403 344017818 Oct 13  2017 RAS-BA500-225_--.pdf
+-rwxr-xr-x  1 root root     11264 Feb 20  2018 Thumbs.db
+drwxrwxrwx 19 1426 1116      2048 May 16 09:00 2.BA_TAA
+-rw-r--r--  1 root root        93 Jun 19 10:59 stress_groups
+-rw-r--r--  1 root root       823 Jun 19 10:59 stress_groups2
+-rw-r--r--  1 root root      6881 Jun 19 11:00 stress_groups3
+-rw-r--r--  1 root root      7797 Jun 19 11:02 stress_groups_all
+-rw-r--r--  1 root root      7797 Jun 19 11:02 stress_groups_all_sorted
+-rw-r--r--  1 root root       148 Jun 19 11:03 stress_groups_all_uniq
+-rwx---rwx  1 2754  445  13151549 Aug 31 16:56 116_WTBF_CS100_FWB_Panel_531_Fasteners.xlsm
+-rwx---rwx  1 7520  420         0 Sep 14 08:38 SOAB012.tmp
+-rwx---rwx  1 7520  420         0 Sep 18 07:36 SOAC035.tmp
+-rwx---rwx  1 7520  420         0 Sep 18 07:38 SOA6107.tmp
+drwxrwxr-x 18 7551 1111      4096 Sep 20 15:20 1.BA_Integration
+drwx---rwx  2 7551 1111        80 Sep 21 10:10 Models
+-rwx---rwx  1 7520  420         0 Sep 25 14:00 SOADC14.tmp
+-rwx---rwx  1 7520  420         0 Sep 25 14:07 SOADF8F.tmp
+-rwx---rwx  1 7520  420         0 Sep 25 14:08 SOA1428.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 07:17 SOA8363.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:23 SOA66A4.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:24 SOADABC.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:27 SOA4DFB.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:27 SOA4EF5.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:31 SOA4F57.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:31 SOA50DE.tmp
+-rwx---rwx  1 7520  420         0 Sep 26 15:31 SOA51D9.tmp
+drwxrwxrwx  2 root root      1024 Oct  3 12:41 test
+nasadmin VG50CA [ ~ ]$
+
+
+CKM00141001635
+CKM00141001635
+
+======================
+
+X:\1.BA_Integration\99. Liaison\Liaison_partage
+
+nasadmin VG50CA [ /nas/quota/slot_2/fs2176 ]$ server_export server_2|grep -i ncap_stress
+export "/fs2176/ncap_stress" name="/ncap_stress" root=xsroot:mtllinas002 access=allnfs:mtllinas002 comment="ncap_stress - Roberto_de_Palma"
+share "ncap_stress" "/fs2176/ncap_stress/data/ncap_stress" umask=022 maxusr=4294967295 type=Global netbios=MTLCINAS010 comment="ncap_stress"
+
+
+CIFS Server MTLCINAS010[AERO] RC=567
+ Full computer name=mtlcinas010.aero.aero.bombardier.net realm=AERO.AERO.BOMBARDIER.NET
+ Comment='EMC-SNAS:T8.1.9.15505'
+ if=MTLCINAS010_FSN0 l=172.19.98.207 b=172.19.98.255 mac=0:60:16:69:7b:1a
+  FQDN=mtlcinas010.aero.aero.bombardier.net (Updated to DNS)
+ Password change interval: 0 minutes
+ Last password change: Sun Sep  6 06:58:15 2015 GMT
+ Password versions: 3
+
+nasadmin VG50CA [ /nas/quota/slot_2/fs2176/ncap_stress ]$ ll -ah data/ncap_stress/
+total 426M
+drwxr-xrwx  8 7551 1111 2.0K Oct  3 12:39 .
+drwxr-xr-x  3 root bin  1.0K Dec  3  2010 ..
+-rwx---rwx  1 2754  445  13M Aug 31 16:56 116_WTBF_CS100_FWB_Panel_531_Fasteners.xlsm
+
+nasadmin VG50CA [ /nas/quota/slot_2/fs2176/ncap_stress ]$ ll -ah data/
+total 24K
+drwxr-xr-x 3 root bin  1.0K Dec  3  2010 .
+drwxrwxr-x 3 1426 1111 1.0K Dec  3  2010 ..
+drwxr-xrwx 8 7551 1111 2.0K Oct  3 12:39 ncap_stress
+
+===========================================
+
+nasadmin VG50CA [ /nas/quota/slot_2/fs2176/ncap_stress ]$ ll -ah data/ncap_stress/
+total 426M
+drwxr-xrwx  8 7551 1111 2.0K Oct  3 12:39 .
+drwxr-xr-x  3 root bin  1.0K Dec  3  2010 ..
+-rwx---rwx  1 2754  445  13M Aug 31 16:56 116_WTBF_CS100_FWB_Panel_531_Fasteners.xlsm
+
+445         nis         Tue Oct  6 10:44:22 2015 _HISTORY_SID_RANGE_\Stress      S-1-5-15-7ed96396-724b7a55-5c8f5cef-249f
+445         nis         Tue Sep  8 14:29:23 2015 AERO\Stress                     S-1-5-15-cd0957bf-f979e51b-3238bcc0-2060
+2754        nis         Tue Mar  1 17:00:04 2016 AERO\AM084891                   S-1-5-15-cd0957bf-f979e51b-3238bcc0-3209
+
+===========================================
+421
+
+707
+
+775
+642
+
+
+username& ID ; Mario De Launiere b0461638
+
+===========================================
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+2018-10-12 14:42:49: SECURITY: 3: DBMSCache::setUser - the user table NIS_user_cache_ecs_canadair_ca is full, please clean the cache.
+
+
+Did they have multiple IP addresses on the same NFSv4.1 client?
+multiple v4.1 clients with same client id. This is probably because they are cloning the redhat guests and keeping the same host name.
+
+===========================================
+
+Time Stamp 10/15/18 04:17:33 (GMT) Event Number 840 Severity Warning Host uswydvnx-1spb Storage Array APM00112200948 SPB Device Bus 1 Enclosure 2 Disk 4 Description Data Sector Invalidated
+Time Stamp 10/15/18 04:17:33 (GMT) Event Number 956 Severity Error Host uswydvnx-1spb Storage Array APM00112200948 SPB Device Bus 1 Enclosure 2 Disk 3 Description Parity Invalidated
+Time Stamp 10/15/18 04:17:39 (GMT) Event Number 957 Severity Error Host uswydvnx-1spb Storage Array APM00112200948 SPB Device Bus 1 Enclosure 2 Disk 4 Description Uncorrectable Sector
+Time Stamp 10/15/18 04:17:39 (GMT) Event Number 953 Severity Error Host uswydvnx-1spb Storage Array APM00112200948 SPB Device Bus 1 Enclosure 2 Disk 3 Description Uncorrectable Parity Sector
+
+
+2018-10-02 22:15:35: NDMP: 6: Network is busy, SendStreamNoWait() in writeIt() retry 81 times
+
+1) Start the NDMP backup.
+
+2) Run the server_netstat <server_x> -a |grep 10000
+
+3) Start the network trace filtering on the backup server IP../tcpdump_loop.sh server_2 -start <network interface> -w <FS mountpoint> -t 500000 -n 20 -host <IP of backup server> -u 30 -p "error sending file history data"<network interface> will be the device on data mover (server_ifconfig command) which hosts the IP address seen in step number 2 (port 10000 side)<ip address of the backup server> is the IP address from step number 2. 
+
+The File system mentioned about should have enough space to host 20, 500MB files (10GB). We are not expecting much traffic anyway because they have local tape drives. 
+
+The tcpdump will stop when it see the pattern "error sending file history data". It will quit as well as it will do a server_log in /home/nasadmin/server_log_tcpdump*
+
+
+4) collect the traces and server log will put the tcpdumploop some where accessible and update the AR soon. 
+
+The tcpdump loop script is placed at ->    /disks/CTD_Field6/877xxx/877962_DOLPHIN_INTEGRATION_SA/2016-12-13_03-56
+
+-rwxr-xr-x  1 subras19 media     10604 Dec 22 04:25 tcpdump_loop.sh
+
+nohup ./tcpdump_loop_v2_2p.sh server_2 -start lacp0 -w /root_vdm_1/filesystem -t 500000 -n 400 -l /celerra/dvdiso/ndmptcpdump.out -p "NDMP request header with error" &
+
+Few information I will need. 
+1. Backup Server IP
+2. I need a file system with at least 100GB of available space to store this network trace
+
+===========================================
+sys_log
+
+Oct 15 21:45:50 2018:DART:DNS:ERROR:1:Slot 2:::1539629448:The DNS client is unable to connect to name server 10.21.203.11 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629450:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629452:The DNS client is unable to connect to name server 10.21.203.12 : Connection timed out 
+Oct 15 21:46:00 2018:DART:DNS:ERROR:1:Slot 2:::1539629454:The DNS client is unable to connect to name server 10.21.203.11 : Connection timed out 
+
+
+===========================================
+
+	 -------------------------------------------------------------
+KEY=APM001606040512007_2_154025
+
+DATA=<?xml version="1.0"?><CMD_RECOVER><REQUEST_INFO longOperation="1" xmlRequestType="2"  senderTaskId=""  srcIp="128.221.252.2" dstIp="128.221.252.100" ></REQUEST_INFO><CIC_REQUEST> <CIC_COMMAND TASK_ID="APM001606040512007_2_154025" SEQ_NUM="0" LOG_FLAG="true" NODE_ID="2"  TASK_DESCRIPTION="filesystem extension" TASK_CREATION_TIME="1539405020" CS_TASK_ID=""  TASK_ORIGINATOR="" PROPERTIES="" ACTION="Autoextend" ><Filesystem 
+    	filesystem="3242"
+    	saveVolume="49502"
+    	maxSize="0"
+    	requestedSize="0"
+    	highWaterMark="90"
+    	extensionType="autoSaveVolume"
+    	xmlVersion="1.0" />
+</CIC_COMMAND> </CIC_REQUEST> </CMD_RECOVER>
+END_RECORD
+
+	 -------------------------------------------------------------
+	 
+[nasadmin@ftdconas13cm0 ~]$ nas_replicate -list|grep -i ACDC02_gfs1017
+ACDC02_gfs1017_FTDC13     filesystem server_2                  <--FTDC13_DM2_ACDCO+ acdconas02c+ OK
+
+[nasadmin@ftdconas13cm0 ~]$ nas_replicate -info ACDC02_gfs1017_FTDC13
+ID                             = 17448_APM00160604053_2007_49462_APM00160604051_2007
+Name                           = ACDC02_gfs1017_FTDC13
+Source Status                  = OK
+Network Status                 = OK
+Destination Status             = OK
+Last Sync Time                 = Tue Sep 18 16:04:08 CDT 2018
+Type                           = filesystem
+Celerra Network Server         = acdconas02cm0
+Dart Interconnect              = FTDC13_DM2_ACDCO2_DM2
+Peer Dart Interconnect         = ACDC02_DM2_FTDC13_DM2
+Replication Role               = destination
+Source Filesystem              = ACDC02_gfs1017
+Source Data Mover              = server_2
+Source Interface               = 10.208.252.120
+Source Control Port            = 0
+Source Current Data Port       = 65496
+Destination Filesystem         = ACDC02_gfs1017_replica1
+Destination Data Mover         = server_2
+Destination Interface          = 143.222.104.214
+Destination Control Port       = 5085
+Destination Data Port          = 8888
+Max Out of Sync Time (minutes) = 10
+Current Transfer Size (KB)     = 3545285808
+Current Transfer Remain (KB)   = 797237808
+Estimated Completion Time      = Tue Oct 16 18:53:36 CDT 2018
+Current Transfer is Full Copy  = No
+Current Transfer Rate (KB/s)   = 8610
+Current Read Rate (KB/s)       = 32850
+Current Write Rate (KB/s)      = 26894
+Previous Transfer Rate (KB/s)  = 132
+Previous Read Rate (KB/s)      = 10824
+Previous Write Rate (KB/s)     = 9735
+Average Transfer Rate (KB/s)   = 4917
+Average Read Rate (KB/s)       = 20176
+Average Write Rate (KB/s)      = 7897
+
+[nasadmin@ftdconas13cm0 ~]$	 
+
+	 -------------------------------------------------------------
+KEY=APM001606040512007_2_154054
+
+DATA=<?xml version="1.0"?><CMD_RECOVER><REQUEST_INFO longOperation="1" xmlRequestType="2"  senderTaskId=""  srcIp="128.221.252.2" dstIp="128.221.252.100" ></REQUEST_INFO><CIC_REQUEST> <CIC_COMMAND TASK_ID="APM001606040512007_2_154054" SEQ_NUM="0" LOG_FLAG="true" NODE_ID="2"  TASK_DESCRIPTION="filesystem extension" TASK_CREATION_TIME="1539410545" CS_TASK_ID=""  TASK_ORIGINATOR="" PROPERTIES="" ACTION="Autoextend" ><Filesystem 
+    	filesystem="1088"
+    	saveVolume="200"
+    	maxSize="0"
+    	requestedSize="0"
+    	highWaterMark="90"
+    	extensionType="autoSaveVolume"
+    	xmlVersion="1.0" />
+</CIC_COMMAND> </CIC_REQUEST> </CMD_RECOVER>
+END_RECORD
+
+	 -------------------------------------------------------------

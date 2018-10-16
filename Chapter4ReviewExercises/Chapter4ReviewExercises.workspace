@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Chapter4ReviewExercises" Database="" Version="10.0.0">
+  <Project Name="NestedLoops" Path="NestedLoops/NestedLoops.project" Active="No"/>
+  <Project Name="Calender" Path="Calender/Calender.project" Active="No"/>
+  <Project Name="stringFunctions" Path="stringFunctions/stringFunctions.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="NestedLoops" ConfigName="Debug"/>
+      <Project Name="Calender" ConfigName="Debug"/>
+      <Project Name="stringFunctions" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="NestedLoops" ConfigName="Release"/>
+      <Project Name="Calender" ConfigName="Release"/>
+      <Project Name="stringFunctions" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

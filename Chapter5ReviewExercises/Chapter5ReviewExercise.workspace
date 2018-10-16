@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Chapter5ReviewExercise" Database="" Version="10.0.0">
+  <Project Name="ReviewExercises" Path="ReviewExercises/ReviewExercises.project" Active="No"/>
+  <Project Name="LettertoNumbers" Path="LettertoNumbers/LettertoNumbers.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="ReviewExercises" ConfigName="Debug"/>
+      <Project Name="LettertoNumbers" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="ReviewExercises" ConfigName="Release"/>
+      <Project Name="LettertoNumbers" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
