@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="CS124" Database="" Version="10.0.0">
+  <Project Name="Test" Path="Test/Test.project" Active="No"/>
+  <Project Name="Assignment12" Path="Assignment12/Assignment12.project" Active="No"/>
+  <Project Name="Test1" Path="Test1/Test1.project" Active="No"/>
+  <Project Name="Project4" Path="Project4/Project4.project" Active="No"/>
+  <Project Name="Project3" Path="Project3/Project3.project" Active="No"/>
+  <Project Name="Project5" Path="Project5/Project5.project" Active="No"/>
+  <Project Name="CalendarTest" Path="CalendarTest/CalendarTest.project" Active="No"/>
+  <Project Name="leapyearsgenerator" Path="leapyearsgenerator/leapyearsgenerator.project" Active="No"/>
+  <Project Name="CalendarGenerator" Path="CalendarGenerator/CalendarGenerator.project" Active="No"/>
+  <Project Name="Quiz6" Path="Quiz6/Quiz6.project" Active="No"/>
+  <Project Name="Looptest" Path="Looptest/Looptest.project" Active="No"/>
+  <Project Name="Project7" Path="Project7/Project7.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Test" ConfigName="Debug"/>
+      <Project Name="Assignment12" ConfigName="Debug"/>
+      <Project Name="Test1" ConfigName="Debug"/>
+      <Project Name="Project4" ConfigName="Debug"/>
+      <Project Name="Project3" ConfigName="Debug"/>
+      <Project Name="Project5" ConfigName="Debug"/>
+      <Project Name="CalendarTest" ConfigName="Debug"/>
+      <Project Name="leapyearsgenerator" ConfigName="Debug"/>
+      <Project Name="CalendarGenerator" ConfigName="Debug"/>
+      <Project Name="Quiz6" ConfigName="Debug"/>
+      <Project Name="Looptest" ConfigName="Debug"/>
+      <Project Name="Project7" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Test" ConfigName="Release"/>
+      <Project Name="Assignment12" ConfigName="Release"/>
+      <Project Name="Test1" ConfigName="Release"/>
+      <Project Name="Project4" ConfigName="Release"/>
+      <Project Name="Project3" ConfigName="Release"/>
+      <Project Name="Project5" ConfigName="Release"/>
+      <Project Name="CalendarTest" ConfigName="Release"/>
+      <Project Name="leapyearsgenerator" ConfigName="Release"/>
+      <Project Name="CalendarGenerator" ConfigName="Release"/>
+      <Project Name="Quiz6" ConfigName="Release"/>
+      <Project Name="Looptest" ConfigName="Release"/>
+      <Project Name="Project7" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
